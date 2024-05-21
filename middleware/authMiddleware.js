@@ -1,21 +1,23 @@
-// middleware/authMiddleware.js
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "your_jwt_secret_key";
+const JWT_SECRET = "your_jwt_secret_key"; // Make sure this matches in both files
 
 const authenticateJWT = (req, res, next) => {
-  const token = req.header("Authorization");
+  const authHeader = req.headers.authorization;
 
-  if (!token) {
-    return res.status(401).json({ message: "Access denied" });
-  }
+  if (authHeader) {
+    const token = authHeader.split(" ")[1];
 
-  try {
-    const verified = jwt.verify(token, JWT_SECRET);
-    req.user = verified;
-    next();
-  } catch (err) {
-    res.status(400).json({ message: "Invalid token" });
+    jwt.verify(token, JWT_SECRET, (err, user) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+
+      req.user = user;
+      next();
+    });
+  } else {
+    res.sendStatus(401);
   }
 };
 

@@ -1,9 +1,8 @@
-// controllers/authController.js
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { users } = require("../models/userModel");
 
-const JWT_SECRET = "your_jwt_secret_key";
+const JWT_SECRET = "your_jwt_secret_key"; // Make sure this matches in both files
 
 const register = async (req, res) => {
   const { username, password } = req.body;

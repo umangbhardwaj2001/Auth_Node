@@ -39,6 +39,7 @@ const loginUser = async () => {
         },
       }
     );
+    console.log("Login response:", response.data); // Add this line
     return response.data.token;
   } catch (error) {
     console.error(
