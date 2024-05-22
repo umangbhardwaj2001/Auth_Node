@@ -1,0 +1,21 @@
+
+# Dependency directories
+node_modules
+
+
+# Optional npm cache directory
+.npm
+.parcel-cache/
+# Optional REPL history
+.node_repl_history
+.DS_Store
+
+#Excluding build directory
+dist/
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
