@@ -2,8 +2,15 @@ import React from "react";
 
 import { createRoot } from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
+import Login from "./Login/Login";
+import User from "./User/User";
+import Register from "./Register/Register";
 import "jquery";
 
 import "popper.js/dist/umd/popper";
@@ -38,6 +45,12 @@ function PostIdea() {
   return <IdeaForm />;
 }
 
+// PrivateRoute component to handle authentication
+const PrivateRoute = ({ element }) => {
+  const token = localStorage.getItem("token");
+  return token ? element : <Navigate to="/login" />;
+};
+
 // Routing
 
 const appRouter = createBrowserRouter([
@@ -46,6 +59,11 @@ const appRouter = createBrowserRouter([
   { path: "/post", element: <IdeaForm /> },
 
   { path: "/login", element: <Login /> },
+  {
+    path: "/user",
+    element: <PrivateRoute element={<User />} />,
+  },
+  { path: "/register", element: <Register /> },
 ]);
 
 // Rendering

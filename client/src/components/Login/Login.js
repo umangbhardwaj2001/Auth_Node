@@ -1,37 +1,29 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 import styles from "./Login.module.css";
 
 function Login() {
   const [username, setUsername] = useState("");
-
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:1255/api/auth/login", {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          username: username,
-
-          password: password,
-        }),
-      });
-
-      console.log(response);
-
-      const data = await response.json();
-
-      console.log("Success:", data);
+      const response = await axios.post(
+        "http://localhost:3000/api/auth/login",
+        { username, password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      localStorage.setItem("token", response.data.token);
+      window.location.href = "/user";
     } catch (error) {
-      console.error("Error:", error);
+      setError("Invalid credentials");
     }
   };
 
@@ -47,7 +39,9 @@ function Login() {
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
 
         <div id="emailHelp" class="form-text">
@@ -64,18 +58,12 @@ function Login() {
           type="password"
           class="form-control"
           id="exampleInputPassword1"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
       </div>
-
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-
-        <label class="form-check-label" for="exampleCheck1">
-          Check me out
-        </label>
-      </div>
-
+      {error && <p>{error}</p>}
       <button type="submit" class="btn btn-primary">
         Submit
       </button>
