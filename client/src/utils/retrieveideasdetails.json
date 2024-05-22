@@ -1,0 +1,271 @@
+[
+  {
+    "id": 1,
+
+    "ideaName": "Netwin Helper - Helps retrieving account and user details of accounts currently occupying Fiber ports.",
+
+    "description": "To test Fiber orders, we need ports and the ports in QA environment are pretty limited. In order to check which accounts are occupying ports, we go through the following steps:\n1. Check Netwin portal for Accounts occupying ports in a specific environment or check for Ports currently reserved and pending activation.\n2. If pending ports are found, query the database with the pending Reservation ID and get the Account Number. - [Database keeps timing out]\n3. Check the Account in DDP to get the Account's owner and its history (When the account was last used). - [This step is slow]\n4. Repeat steps 2 and 3 for all accounts.\nIn order to get this data all in one place instead of switching between different applications, I created this tool which saves the hassle and provides all the data in a tabular format in just a few clicks.",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-12T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1368
+  },
+
+  {
+    "id": 2,
+
+    "ideaName": "Check Feasibility - Check if Fiber feasibility is available on a specific address",
+
+    "description": "For Altice's Fiber testing, before we place an order, the address must have active Fiber Ports available. if a Port is available the address is feasible for a fiber connection.\nThis tool checks if an address has ports available or not. ",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-11T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1367
+  },
+
+  {
+    "id": 3,
+
+    "ideaName": "Name Description Checker - A comparison tool which helps in comparing offer names, descriptions and prices in bulk",
+
+    "description": "A major part of Altice’s Ecommerce Offers testing revolves around what kind of offers the user gets and what that offer entails. These are enlisted as the Offers’ description, which details the perks you get with said offer.\nAn excel sheet called the “Gathering sheet” keeps a record of all the offers, their descriptions, prices, and tons of other data. The offers you see on the Ecommerce platforms should match the offers from the gathering sheet.\nThese descriptions and prices keep changing every other test cycle depending on if the offer has any promotional stuff added/removed from it, so the testers are constantly checking the descriptions and prices of all the offers manually which often leads to overlooking minor typos and errors especially when it comes to checking 100+ offers.\nSo, to tackle this issue, I came up with this tool to do the checking automatically and in bulk and then save the result (whether the comparison passed/failed) in a .csv file to go over later.\nThis tool can be used to do a quick sanity as soon as a new test cycle rolls over and identify potential errors in names, descriptions, and prices early on.\n",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "Sanity tests at the beginning of a cycle can help identify mismatches and typos in offer names. descriptions and prices early on which can then be corrected over the course of the cycle.",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-11T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1366
+  },
+
+  {
+    "id": 4,
+
+    "ideaName": "Name Description Checker - A comparison tool which helps in comparing offer names, descriptions and prices in bulk",
+
+    "description": "A major part of Altice’s Ecommerce Offers testing revolves around what kind of offers the user gets and what that offer entails. These are enlisted as the Offers’ description, which details the perks you get with said offer.\nAn excel sheet called the “Gathering sheet” keeps a record of all the offers, their descriptions, prices, and tons of other data. The offers you see on the Ecommerce platforms should match the offers from the gathering sheet.\nThese descriptions and prices keep changing every other test cycle depending on if the offer has any promotional stuff added/removed from it, so the testers are constantly checking the descriptions and prices of all the offers manually which often leads to overlooking minor typos and errors especially when it comes to checking 100+ offers.\nSo, to tackle this issue, I came up with this tool to do the checking automatically and in bulk and then save the result (whether the comparison passed/failed) in a .csv file to go over later.\nThis tool can be used to do a quick sanity as soon as a new test cycle rolls over and identify potential errors in names, descriptions, and prices early on.\n",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "Sanity tests at the beginning of a cycle can help identify mismatches and typos in offer names. descriptions and prices early on which can then be corrected over the course of the cycle.",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-11T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1366
+  },
+
+  {
+    "id": 5,
+
+    "ideaName": "Name Description Checker - A comparison tool which helps in comparing offer names, descriptions and prices in bulk",
+
+    "description": "A major part of Altice’s Ecommerce Offers testing revolves around what kind of offers the user gets and what that offer entails. These are enlisted as the Offers’ description, which details the perks you get with said offer.\nAn excel sheet called the “Gathering sheet” keeps a record of all the offers, their descriptions, prices, and tons of other data. The offers you see on the Ecommerce platforms should match the offers from the gathering sheet.\nThese descriptions and prices keep changing every other test cycle depending on if the offer has any promotional stuff added/removed from it, so the testers are constantly checking the descriptions and prices of all the offers manually which often leads to overlooking minor typos and errors especially when it comes to checking 100+ offers.\nSo, to tackle this issue, I came up with this tool to do the checking automatically and in bulk and then save the result (whether the comparison passed/failed) in a .csv file to go over later.\nThis tool can be used to do a quick sanity as soon as a new test cycle rolls over and identify potential errors in names, descriptions, and prices early on.\n",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "Sanity tests at the beginning of a cycle can help identify mismatches and typos in offer names. descriptions and prices early on which can then be corrected over the course of the cycle.",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-11T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1366
+  },
+
+  {
+    "id": 6,
+
+    "ideaName": "Name Description Checker - A comparison tool which helps in comparing offer names, descriptions and prices in bulk",
+
+    "description": "A major part of Altice’s Ecommerce Offers testing revolves around what kind of offers the user gets and what that offer entails. These are enlisted as the Offers’ description, which details the perks you get with said offer.\nAn excel sheet called the “Gathering sheet” keeps a record of all the offers, their descriptions, prices, and tons of other data. The offers you see on the Ecommerce platforms should match the offers from the gathering sheet.\nThese descriptions and prices keep changing every other test cycle depending on if the offer has any promotional stuff added/removed from it, so the testers are constantly checking the descriptions and prices of all the offers manually which often leads to overlooking minor typos and errors especially when it comes to checking 100+ offers.\nSo, to tackle this issue, I came up with this tool to do the checking automatically and in bulk and then save the result (whether the comparison passed/failed) in a .csv file to go over later.\nThis tool can be used to do a quick sanity as soon as a new test cycle rolls over and identify potential errors in names, descriptions, and prices early on.\n",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "Sanity tests at the beginning of a cycle can help identify mismatches and typos in offer names. descriptions and prices early on which can then be corrected over the course of the cycle.",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-11T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1366
+  },
+
+  {
+    "id": 7,
+
+    "ideaName": "Name Description Checker - A comparison tool which helps in comparing offer names, descriptions and prices in bulk",
+
+    "description": "A major part of Altice’s Ecommerce Offers testing revolves around what kind of offers the user gets and what that offer entails. These are enlisted as the Offers’ description, which details the perks you get with said offer.\nAn excel sheet called the “Gathering sheet” keeps a record of all the offers, their descriptions, prices, and tons of other data. The offers you see on the Ecommerce platforms should match the offers from the gathering sheet.\nThese descriptions and prices keep changing every other test cycle depending on if the offer has any promotional stuff added/removed from it, so the testers are constantly checking the descriptions and prices of all the offers manually which often leads to overlooking minor typos and errors especially when it comes to checking 100+ offers.\nSo, to tackle this issue, I came up with this tool to do the checking automatically and in bulk and then save the result (whether the comparison passed/failed) in a .csv file to go over later.\nThis tool can be used to do a quick sanity as soon as a new test cycle rolls over and identify potential errors in names, descriptions, and prices early on.\n",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "Sanity tests at the beginning of a cycle can help identify mismatches and typos in offer names. descriptions and prices early on which can then be corrected over the course of the cycle.",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-11T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1366
+  },
+
+  {
+    "id": 8,
+
+    "ideaName": "Name Description Checker - A comparison tool which helps in comparing offer names, descriptions and prices in bulk",
+
+    "description": "A major part of Altice’s Ecommerce Offers testing revolves around what kind of offers the user gets and what that offer entails. These are enlisted as the Offers’ description, which details the perks you get with said offer.\nAn excel sheet called the “Gathering sheet” keeps a record of all the offers, their descriptions, prices, and tons of other data. The offers you see on the Ecommerce platforms should match the offers from the gathering sheet.\nThese descriptions and prices keep changing every other test cycle depending on if the offer has any promotional stuff added/removed from it, so the testers are constantly checking the descriptions and prices of all the offers manually which often leads to overlooking minor typos and errors especially when it comes to checking 100+ offers.\nSo, to tackle this issue, I came up with this tool to do the checking automatically and in bulk and then save the result (whether the comparison passed/failed) in a .csv file to go over later.\nThis tool can be used to do a quick sanity as soon as a new test cycle rolls over and identify potential errors in names, descriptions, and prices early on.\n",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "Sanity tests at the beginning of a cycle can help identify mismatches and typos in offer names. descriptions and prices early on which can then be corrected over the course of the cycle.",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-11T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1366
+  },
+
+  {
+    "id": 9,
+
+    "ideaName": "Name Description Checker - A comparison tool which helps in comparing offer names, descriptions and prices in bulk",
+
+    "description": "A major part of Altice’s Ecommerce Offers testing revolves around what kind of offers the user gets and what that offer entails. These are enlisted as the Offers’ description, which details the perks you get with said offer.\nAn excel sheet called the “Gathering sheet” keeps a record of all the offers, their descriptions, prices, and tons of other data. The offers you see on the Ecommerce platforms should match the offers from the gathering sheet.\nThese descriptions and prices keep changing every other test cycle depending on if the offer has any promotional stuff added/removed from it, so the testers are constantly checking the descriptions and prices of all the offers manually which often leads to overlooking minor typos and errors especially when it comes to checking 100+ offers.\nSo, to tackle this issue, I came up with this tool to do the checking automatically and in bulk and then save the result (whether the comparison passed/failed) in a .csv file to go over later.\nThis tool can be used to do a quick sanity as soon as a new test cycle rolls over and identify potential errors in names, descriptions, and prices early on.\n",
+
+    "category": null,
+
+    "ownerName": "Ganesh Prakash Kutty",
+
+    "ownerId": 168465,
+
+    "reusable": "no",
+
+    "businessValue": "Sanity tests at the beginning of a cycle can help identify mismatches and typos in offer names. descriptions and prices early on which can then be corrected over the course of the cycle.",
+
+    "comments": "",
+
+    "link": null,
+
+    "pictureFile": null,
+
+    "createdDate": "2023-12-11T18:30:00.000+00:00",
+
+    "ownerEmail": null,
+
+    "ideaId": 1366
+  }
+]
