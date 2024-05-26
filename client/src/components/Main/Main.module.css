@@ -1,6 +1,5 @@
 * {
   margin: 0;
-
   padding: 0;
 
   box-sizing: border-box;
@@ -24,7 +23,7 @@
 
 .ideaCard {
   position: relative;
-
+  border: black solid 10px;
   flex-basis: calc(
     33.33% - 20px
   ); /* Set the initial flex basis to 33.33% (minus margin) */
