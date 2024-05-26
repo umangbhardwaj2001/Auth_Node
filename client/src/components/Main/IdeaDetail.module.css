@@ -1,0 +1,25 @@
+.ideaDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.ideaDetail div {
+  margin-bottom: 10px;
+}
+
+.ideaDetail strong {
+  color: #333;
+  margin-right: 10px;
+}
+
+.ideaDetail div:nth-child(even) {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+}
