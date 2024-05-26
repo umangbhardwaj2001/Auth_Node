@@ -1,10 +1,17 @@
-import styles from "./Main.module.scss";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./Main.module.css";
+
 const Ideacard = (props) => {
   const { APIresponse } = props;
-  const { ideaName, ownerName, ownerId, reusable, ideaId } = APIresponse;
+  const { id, ideaName, ownerName, ownerId, reusable, ideaId } = APIresponse;
+  const navigate = useNavigate();
+  const handleCardClick = () => {
+    navigate(`/${id}`);
+  };
   return (
-    <div className={`${styles.ideacard}`}>
-      <div className={`${styles.ideaLogo}`}>
+    <div className={`${styles.ideaCard}`}>
+      <div className={`${styles.ideaLogo}`} onClick={handleCardClick}>
         <h3>{ideaName}</h3>
         <p>{ownerName}</p>
         <h4>{ownerId}</h4>
