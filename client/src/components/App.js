@@ -13,7 +13,8 @@ import IdeaDetail from "./Main/IdeaDetail";
 import Register from "./Register/Register";
 import Main from "./Main/Main";
 import IdeaForm from "./Form/IdeaForm";
-
+import Footer from "./Footer/Footer";
+import NotFound from "./NotFound/NotFound";
 import "jquery";
 import "popper.js/dist/umd/popper";
 import "bootstrap/dist/js/bootstrap";
@@ -29,6 +30,7 @@ const AppLayout = ({ children }) => {
     <React.Fragment>
       <Header />
       {children}
+      <Footer />
     </React.Fragment>
   );
 };
@@ -53,8 +55,9 @@ const App = () => {
           <Route path="/post" element={<IdeaForm />} />
           <Route path="/login" element={<Login />} />
           <Route path="/user" element={<PrivateRoute element={<User />} />} />
-          <Route path="/:id" element={<IdeaDetail />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/:id" element={<IdeaDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AppLayout>
     </Router>
@@ -65,3 +68,5 @@ const App = () => {
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(<App />);
+
+//  error pagee bhi id pr jaaa rhe the
