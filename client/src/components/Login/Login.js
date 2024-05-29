@@ -20,7 +20,7 @@ function Login() {
           },
         }
       );
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("token", response.data.accessToken);
       window.location.href = "/user";
     } catch (error) {
       setError("Invalid credentials");
