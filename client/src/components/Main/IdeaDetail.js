@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./IdeaDetail.module.css";
-import retrieveideasdetails from "../../utils/retrieveideasdetails.json";
+// import retrieveideasdetails from "../../utils/retrieveideasdetails.json";
+import apiClient from "../../utils/apiClient";
 import NotFound from "../NotFound/NotFound";
 const IdeaDetail = () => {
   const { id } = useParams();
@@ -9,11 +10,12 @@ const IdeaDetail = () => {
   const [idea, setIdea] = useState(null);
 
   useEffect(() => {
-    const fetchIdea = () => {
-      //   const response = await fetch(retrieveideasdetails);
-      //   const json = await response.json();
-      //   const allIdeas = json.data?.cards[1]?.card?.info || [];
-      const allIdeas = retrieveideasdetails || [];
+    const fetchIdea = async () => {
+      console.log(retrieveideasdetails);
+      const response = await apiClient.get("/idea");
+      const json = await response.json();
+      const allIdeas = json; //json.data?.cards[1]?.card?.info || [];
+      // const allIdeas = retrieveideasdetails || [];
       const selectedIdea = allIdeas.find((idea) => idea.id.toString() === id);
       if (selectedIdea) {
         setIdea(selectedIdea);
