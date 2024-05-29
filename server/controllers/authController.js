@@ -20,21 +20,28 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { username, password } = req.body;
+  try {
+    const user = users.find((user) => user.username === username);
+    if (!user) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
 
-  const user = users.find((user) => user.username === username);
-  if (!user) {
-    return res.status(400).json({ message: "Invalid credentials" });
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ username: user.username }, JWT_SECRET, {
+      expiresIn: "86400",
+    });
+    // res.json({ token });
+    res.status(200).send({
+      accessToken: token,
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
-
-  const isPasswordValid = await bcrypt.compare(password, user.password);
-  if (!isPasswordValid) {
-    return res.status(400).json({ message: "Invalid credentials" });
-  }
-
-  const token = jwt.sign({ username: user.username }, JWT_SECRET, {
-    expiresIn: "1h",
-  });
-  res.json({ token });
 };
 
 module.exports = {
