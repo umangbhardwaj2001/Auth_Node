@@ -12,7 +12,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
+        "https://vichardhaara.onrender.com/api/auth/login",
         { username, password },
         {
           headers: {

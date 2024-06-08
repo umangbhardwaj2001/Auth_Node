@@ -12,7 +12,9 @@ const IdeaDetail = () => {
   useEffect(() => {
     const fetchIdea = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/idea");
+        const response = await axios.get(
+          "https://vichardhaara.onrender.com/api/idea"
+        );
         const json = response.data || [];
         const selectedIdea = json.find(
           (idea) => idea._id.toString() === id.toString()

@@ -10,7 +10,9 @@ function Main() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get("http://localhost:3000/api/idea");
+      const response = await axios.get(
+        "https://vichardhaara.onrender.com/api/idea"
+      );
       const json = response.data || [];
       setData(json);
     }

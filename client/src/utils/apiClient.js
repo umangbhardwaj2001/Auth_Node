@@ -5,7 +5,7 @@ const getToken = () => {
 };
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://vichardhaara.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
   },
