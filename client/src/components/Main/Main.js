@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./Main.module.css";
 import IdeaCard from "./IdeaCard";
 import { useState, useEffect, useContext } from "react";
-// import retrieveideasdetails from "../../utils/retrieveideasdetails.json";
-import apiClient from "../../utils/apiClient";
+import axios from "axios";
 import MainLoad from "./MainLoad";
 
 function Main() {
@@ -11,20 +10,13 @@ function Main() {
 
   useEffect(() => {
     async function fetchData() {
-      // const response = await fetch(retrieveideasdetails);
-      // const json = await response.json();
-      // const fetchedData = json || [];
-      // const fetchedData = retrieveideasdetails || [];
-      // setData(fetchedData);
-
-      const response = await apiClient.get("/idea");
-      const json = (await response.data) || [];
+      const response = await axios.get("http://localhost:3000/api/idea");
+      const json = response.data || [];
       setData(json);
     }
     fetchData();
   }, []);
   if (!data) return <MainLoad />;
-
   return (
     <div className={`${styles.ideaContainer}`}>
       {data.map((ideaInfo) => (
