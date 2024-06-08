@@ -1,41 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./IdeaDetail.module.css";
-// import retrieveideasdetails from "../../utils/retrieveideasdetails.json";
-import apiClient from "../../utils/apiClient";
+import axios from "axios";
 import NotFound from "../NotFound/NotFound";
+
 const IdeaDetail = () => {
   const { id } = useParams();
-  const [loading, setLoading] = useState(true);
+  const [received, setReceived] = useState(true);
   const [idea, setIdea] = useState(null);
 
   useEffect(() => {
     const fetchIdea = async () => {
-      console.log(retrieveideasdetails);
-      const response = await apiClient.get("/idea");
-      const json = await response.json();
-      const allIdeas = json; //json.data?.cards[1]?.card?.info || [];
-      // const allIdeas = retrieveideasdetails || [];
-      const selectedIdea = allIdeas.find((idea) => idea.id.toString() === id);
-      if (selectedIdea) {
-        setIdea(selectedIdea);
-        setLoading(false);
-      } else {
-        setLoading(false);
+      try {
+        const response = await axios.get("http://localhost:3000/api/idea");
+        const json = response.data || [];
+        const selectedIdea = json.find(
+          (idea) => idea._id.toString() === id.toString()
+        );
+        if (selectedIdea) setIdea(selectedIdea);
+      } catch (error) {
+        console.error("Error fetching ideas:", error);
+      } finally {
+        setReceived(false);
       }
     };
-    if (
-      !isNaN(id) &&
-      parseInt(id) > 0 &&
-      parseInt(id) <= retrieveideasdetails.length
-    ) {
-      fetchIdea();
-    } else {
-      setLoading(false);
-    }
+    fetchIdea();
   }, [id]);
 
-  if (loading) {
+  if (received) {
     return <div>Loading...</div>;
   }
 
@@ -43,15 +35,15 @@ const IdeaDetail = () => {
     return <NotFound />;
   }
 
-  // if (!idea) return <div>Loading...</div>;
-
   return (
     <div className={styles.ideaDetail}>
-      {Object.entries(idea).map(([key, value]) => (
-        <div key={key}>
-          <strong>{key}:</strong> {value !== null ? value.toString() : "N/A"}
-        </div>
-      ))}
+      {Object.entries(idea)
+        .filter(([key]) => !["_id", "id", "__v"].includes(key))
+        .map(([key, value]) => (
+          <div key={key}>
+            <strong>{key}:</strong> {value !== null ? value.toString() : "N/A"}
+          </div>
+        ))}
     </div>
   );
 };
