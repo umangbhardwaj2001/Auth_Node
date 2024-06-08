@@ -1,114 +1,211 @@
-// src/components/IdeaForm.js
-
 import React, { useState } from "react";
-
-import axios from "axios";
+const axios = require("axios");
+import apiClient from "../../utils/apiClient";
 
 function IdeaForm() {
+  const username = localStorage.getItem("username");
+  const userId = localStorage.getItem("userId");
+  const email = localStorage.getItem("email");
   const [formData, setFormData] = useState({
-    firstName: "",
-
-    lastName: "",
-
-    email: "",
-
-    phoneNumber: "",
-
-    address: "",
+    ideaName: "",
+    description: "",
+    category: "",
+    ownerName: username,
+    ownerId: userId,
+    reusable: "",
+    businessValue: "",
+    comments: "",
+    link: "",
+    pictureFile: "",
+    createdDate: "",
+    ownerEmail: email,
+    ideaId: "",
   });
-
+  const [message, setMessage] = useState(null);
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormData((prevData) => ({
       ...prevData,
-
       [name]: value,
     }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      // Assuming you have an API endpoint for saving user data
-
-      const response = await axios.post("/api/users", formData);
-
-      console.log("Data saved successfully:", response.data);
+      const response = await apiClient.post("/postIdea", formData);
+      setMessage("Data saved successfully:", response.data);
+      // console.log("Data saved successfully:", response.data);
     } catch (error) {
-      console.error("Error saving data:", error);
+      setMessage("Error saving data:", error);
+      // console.error("Error saving data:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-3">
-      <label class="form-label">
-        First Name:
-        <input
-          class="form-control"
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-        />
-      </label>
+    <div>
+      {message && <div>{message}</div>}
+      <form onSubmit={handleSubmit} className="mb-3">
+        <label className="form-label">
+          Idea Name:
+          <input
+            className="form-control"
+            type="text"
+            name="ideaName"
+            value={formData.ideaName}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
 
-      <br />
+        <label className="form-label">
+          Description:
+          <textarea
+            className="form-control"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
 
-      <label class="form-label">
-        Last Name:
-        <input
-          class="form-control"
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-        />
-      </label>
+        <label className="form-label">
+          Category:
+          <input
+            className="form-control"
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
 
-      <br />
+        <label className="form-label">
+          Owner Name:
+          <input
+            className="form-control"
+            type="text"
+            name="ownerName"
+            value={formData.ownerName}
+            // onChange={handleChange}
+            readOnly // Make the field read-only
+          />
+        </label>
+        <br />
 
-      <label class="form-label">
-        Email:
-        <input
-          class="form-control"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-      </label>
+        <label className="form-label">
+          Owner ID:
+          <input
+            className="form-control"
+            type="number"
+            name="ownerId"
+            value={formData.ownerId}
+            // onChange={handleChange}
+            readOnly
+          />
+        </label>
+        <br />
 
-      <br />
+        <label className="form-label">
+          Reusable:
+          <input
+            className="form-control"
+            type="text"
+            name="reusable"
+            value={formData.reusable}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
 
-      <label class="form-label">
-        Phone Number:
-        <input
-          class="form-control"
-          type="tel"
-          name="phoneNumber"
-          value={formData.phoneNumber}
-          onChange={handleChange}
-        />
-      </label>
+        <label className="form-label">
+          Business Value:
+          <input
+            className="form-control"
+            type="text"
+            name="businessValue"
+            value={formData.businessValue}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
 
-      <br />
+        <label className="form-label">
+          Comments:
+          <textarea
+            className="form-control"
+            name="comments"
+            value={formData.comments}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
 
-      <label class="form-label">
-        Address:
-        <textarea
-          class="form-control"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-        />
-      </label>
+        <label className="form-label">
+          Link:
+          <input
+            className="form-control"
+            type="url"
+            name="link"
+            value={formData.link}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
 
-      <br />
+        <label className="form-label">
+          Picture File:
+          <input
+            className="form-control"
+            type="text"
+            name="pictureFile"
+            value={formData.pictureFile}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
 
-      <button type="submit">Submit</button>
-    </form>
+        <label className="form-label">
+          Created Date:
+          <input
+            className="form-control"
+            type="date"
+            name="createdDate"
+            value={formData.createdDate}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+
+        <label className="form-label">
+          Owner Email:
+          <input
+            className="form-control"
+            type="email"
+            name="ownerEmail"
+            value={formData.ownerEmail}
+            // onChange={handleChange}
+            readOnly
+          />
+        </label>
+        <br />
+
+        <label className="form-label">
+          Idea ID:
+          <input
+            className="form-control"
+            type="number"
+            name="ideaId"
+            value={formData.ideaId}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
 

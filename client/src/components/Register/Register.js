@@ -3,6 +3,7 @@ import axios from "axios";
 import apiClient from "../../utils/apiClient";
 const Register = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -15,6 +16,7 @@ const Register = () => {
         {
           username,
           password,
+          email,
         },
         {
           headers: {
@@ -49,6 +51,15 @@ const Register = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input
+            type="mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
