@@ -4,10 +4,10 @@ import styles from "./Main.module.css";
 
 const Ideacard = (props) => {
   const { APIresponse } = props;
-  const { id, ideaName, ownerName, ownerId, reusable, ideaId } = APIresponse;
+  const { _id, ideaName, ownerName, ownerId, reusable, ideaId } = APIresponse;
   const navigate = useNavigate();
   const handleCardClick = () => {
-    navigate(`/${id}`);
+    navigate(`/${_id}`);
   };
   return (
     <div className={`${styles.ideaCard}`} onClick={handleCardClick}>
