@@ -11,7 +11,7 @@ connectDB();
 
 // Use the CORS middleware
 const corsOptions = {
-  origin: "https://vichardhaara.netlify.app/",
+  origin: "https://vichardhaara.netlify.app",
   optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
