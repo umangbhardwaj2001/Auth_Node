@@ -5,7 +5,7 @@ const User = require("../models/userModel");
 const JWT_SECRET = "your_jwt_secret_key"; // Make sure this matches in both files
 
 const register = async (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, email } = req.body;
   try {
     const userExists = await User.findOne({ username });
     console.log(userExists);
@@ -18,6 +18,7 @@ const register = async (req, res) => {
     const newUser = new User({
       username,
       password: hashedPassword,
+      email,
     });
     await newUser.save();
 
@@ -36,7 +37,8 @@ const login = async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-
+    const userId = user.userId;
+    const email = user.email;
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid credentials" });
@@ -47,6 +49,9 @@ const login = async (req, res) => {
     });
     // res.json({ token });
     res.status(200).send({
+      userId: userId,
+      username: username,
+      email: email,
       accessToken: token,
     });
   } catch (error) {
