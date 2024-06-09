@@ -9,10 +9,10 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    const endpoint = process.env.SERVER_URL;
     try {
       const response = await axios.post(
-        "https://vichardhaara.onrender.com/api/auth/login",
+        `${endpoint}/api/auth/login`,
         { username, password },
         {
           headers: {

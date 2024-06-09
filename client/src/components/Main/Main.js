@@ -7,12 +7,10 @@ import MainLoad from "./MainLoad";
 
 function Main() {
   const [data, setData] = useState(null);
-
+  const endpoint = process.env.SERVER_URL;
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(
-        "https://vichardhaara.onrender.com/api/idea"
-      );
+      const response = await axios.get(`${endpoint}/api/idea`);
       const json = response.data || [];
       setData(json);
     }
