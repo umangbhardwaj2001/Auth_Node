@@ -1,6 +1,7 @@
 {
   "name": "brain-wave",
   "version": "1.0.0",
+  "homepage": "https://vichardhaara.netlify.app",
   "private": true,
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
