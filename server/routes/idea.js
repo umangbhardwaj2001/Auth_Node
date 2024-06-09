@@ -5,7 +5,7 @@ const { postIdea } = require("../controllers/ideaController");
 const authenticateJWT = require("../middleware/authMiddleware");
 
 // Route to fetch all ideas
-router.get("/idea", authenticateJWT, async (req, res) => {
+router.get("/idea", async (req, res) => {
   try {
     const ideas = await IdeaCollection.find();
     res.json(ideas);

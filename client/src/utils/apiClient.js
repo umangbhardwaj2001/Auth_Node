@@ -1,11 +1,11 @@
 import axios from "axios";
-
+const endpoint = process.env.SERVER_URL;
 const getToken = () => {
   return localStorage.getItem("token");
 };
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: `${endpoint}/api`,
   headers: {
     "Content-Type": "application/json",
   },
