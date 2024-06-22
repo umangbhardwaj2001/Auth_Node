@@ -17,6 +17,7 @@ pipeline {
                     steps {
                         dir('client') {
                             sh 'npm install'
+                            sh 'npm run build'
                         }
                     }
                 }
