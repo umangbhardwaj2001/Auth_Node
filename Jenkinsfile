@@ -11,18 +11,21 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/umangbhardwaj2001/ThoughtBook'
             }
         }
-        stage('Build Client') {
-            steps {
-                dir('client') {
-                    sh 'npm install'
-                    sh 'npm run build'
+        stage('Build') {
+            parallel {
+                stage('Build Client') {
+                    steps {
+                        dir('client') {
+                            sh 'npm install'
+                        }
+                    }
                 }
-            }
-        }
-        stage('Build Server') {
-            steps {
-                dir('server') {
-                    sh 'npm install'
+                stage('Build Server') {
+                    steps {
+                        dir('server') {
+                            sh 'npm install'
+                        }
+                    }
                 }
             }
         }
