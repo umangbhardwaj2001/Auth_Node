@@ -5,6 +5,10 @@ pipeline {
         nodejs 'NodeJS'
     }
 
+    environment {
+        CI = 'true'
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -31,30 +35,31 @@ pipeline {
             }
         }
         stage('Deploy') {
-            parallel {
-                stage('Start Client') {
-                    steps {
+            steps {
+                parallel (
+                    'Start Client': {
                         dir('client') {
-                            sh 'npm start &'
+                            bat 'start /B npm start'
                         }
-                    }
-                }
-                stage('Start Server') {
-                    steps {
+                    },
+                    'Start Server': {
                         dir('server') {
-                            sh 'npm start &'
+                            bat 'start /B npm start'
                         }
                     }
-                }
+                )
             }
         }
     }
     post {
         always {
-            script {
-                // Ensure any running node processes are killed after the build
-                sh "pkill -f 'node'"
-            }
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Pipeline succeeded.'
+        }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
