@@ -5,10 +5,6 @@ pipeline {
         nodejs 'NodeJS'
     }
 
-    environment {
-        CI = 'true'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -20,46 +16,37 @@ pipeline {
                 stage('Build Client') {
                     steps {
                         dir('client') {
-                            sh 'npm install'
-                            sh 'npm run build'
+                            bat 'npm install'
+                            bat 'npm run build'
                         }
                     }
                 }
                 stage('Build Server') {
                     steps {
                         dir('server') {
-                            sh 'npm install'
+                            bat 'npm install'
                         }
                     }
                 }
             }
         }
         stage('Deploy') {
-            steps {
-                parallel (
-                    'Start Client': {
+            parallel {
+                stage('Start Client') {
+                    steps {
                         dir('client') {
-                            bat 'start /B npm start'
-                        }
-                    },
-                    'Start Server': {
-                        dir('server') {
-                            bat 'start /B npm start'
+                            bat 'start /b npm start'
                         }
                     }
-                )
+                }
+                stage('Start Server') {
+                    steps {
+                        dir('server') {
+                            bat 'start /b npm start'
+                        }
+                    }
+                }
             }
-        }
-    }
-    post {
-        always {
-            echo 'Pipeline finished.'
-        }
-        success {
-            echo 'Pipeline succeeded.'
-        }
-        failure {
-            echo 'Pipeline failed.'
         }
     }
 }
