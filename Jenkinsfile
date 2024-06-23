@@ -17,6 +17,7 @@ pipeline {
                     steps {
                         dir('client') {
                             bat 'npm install'
+                            bat 'npm run build'
                         }
                     }
                 }
@@ -34,14 +35,14 @@ pipeline {
                 stage('Start Client') {
                     steps {
                         dir('client') {
-                            bat 'start /b npm start'
+                            bat 'start "" cmd /c "npm start"'
                         }
                     }
                 }
                 stage('Start Server') {
                     steps {
                         dir('server') {
-                            bat 'start /b npm start'
+                            bat 'start "" cmd /c "npm start"'
                         }
                     }
                 }
