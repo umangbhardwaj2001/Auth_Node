@@ -17,7 +17,6 @@ pipeline {
                     steps {
                         dir('client') {
                             bat 'npm install'
-                            bat 'npm run build'
                         }
                     }
                 }
@@ -31,22 +30,29 @@ pipeline {
             }
         }
         stage('Deploy') {
-            parallel {
-                stage('Start Client') {
-                    steps {
-                        dir('client') {
-                            bat 'start "" cmd /c "npm start"'
-                        }
+            steps {
+                script {
+                    bat 'pm2 delete all || true'
+                    dir('client') {
+                        bat 'pm2 start npm --name "client" -- start'
                     }
-                }
-                stage('Start Server') {
-                    steps {
-                        dir('server') {
-                            bat 'start "" cmd /c "npm start"'
-                        }
+                    dir('server') {
+                        bat 'pm2 start npm --name "server" -- start'
                     }
+                    bat 'pm2 save'
                 }
             }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Pipeline succeeded.'
+        }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
