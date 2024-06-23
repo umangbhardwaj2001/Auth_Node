@@ -17,7 +17,6 @@ pipeline {
                     steps {
                         dir('client') {
                             bat 'npm install'
-                            bat 'npm run build'
                         }
                     }
                 }
