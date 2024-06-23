@@ -49,4 +49,12 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            script {
+                // Ensure any running node processes are killed after the build
+                sh "pkill -f 'node'"
+            }
+        }
+    }
 }
