@@ -34,14 +34,14 @@ pipeline {
                 stage('Start Client') {
                     steps {
                         dir('client') {
-                            bat 'npm start'
+                            bat 'start /b npm start'
                         }
                     }
                 }
                 stage('Start Server') {
                     steps {
                         dir('server') {
-                            bat 'npm start'
+                            bat 'start /b npm start'
                         }
                     }
                 }
